@@ -1,0 +1,117 @@
+/* styles.css */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #ecf0f1;
+    --highlight-color: #3498db;
+    --font-family: Arial, sans-serif;
+    --font-size: 16px;
+    --header-font-size: 2rem;
+    --subheader-font-size: 1.5rem;
+    --padding: 20px;
+    --margin: 10px;
+    --border-radius: 8px;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    background-color: var(--secondary-color);
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 20fr; /* 1fr for navbar, 20fr for main content */
+    grid-template-areas: "navbar main";
+    gap: var(--margin);
+}
+
+#navbar {
+    grid-area: navbar;
+    position: fixed; /* Fixes the navbar in place */
+    top: 0;
+    left: 0;
+    width: 250px; /* Adjust as needed */
+    height: 100vh; /* Full viewport height */
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: var(--padding);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Adds scroll if needed */
+}
+
+header {
+    font-size: var(--header-font-size);
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: var(--margin);
+}
+
+.nav-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+    padding: var(--padding);
+    display: block;
+    text-align: center;
+}
+
+.nav-link:hover {
+    background-color: var(--highlight-color);
+}
+
+/* Main content area */
+#main-doc {
+    grid-area: main;
+    margin-left: 250px; /* Space for the fixed navbar */
+    padding: var(--padding);
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow)
+}
+
+
+/* Responsive Design for Small Screens */
+@media (max-width: 768px) {
+    body {
+        grid-template-columns: 1fr; /* Stack vertically on smaller screens */
+        grid-template-areas:
+            "main"
+            "navbar";
+    }
+
+    #navbar {
+        position: static; /* Navbar will flow with the document */
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-around;
+        margin: 0;
+        padding: 10px;
+    }
+
+    #main-doc {
+        margin-left: 0; /* No margin needed */
+    }
+
+    .nav-link {
+        padding: 10px;
+        text-align: center;
+    }
+}
+
+/* Responsive Design for Medium Screens */
+@media (min-width: 769px) and (max-width: 1024px) {
+    body {
+        grid-template-columns: 200px 1fr; /* Adjust the width of the navbar on medium screens */
+        grid-template-areas: "navbar main";
+    }
+
+    #navbar {
+        width: 200px; /* Adjust width for medium screens */
+    }
+
+    #main-doc {
+        margin-left: 200px; /* Adjust margin for medium screens */
+    }
+}
